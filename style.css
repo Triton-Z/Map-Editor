@@ -1,0 +1,95 @@
+canvas {
+    background-color: #5f7739
+}
+#sidebar {
+    position:absolute;
+    background: #1a1a1a;
+    width: 165px;
+    height: 100vh;
+    top: 0px;
+    right:0px;
+    user-select: none;
+}
+#cursorButton, #crossButton {
+    width: 65px;
+    height: 65px;
+    position: absolute;
+}
+#cursorButton {
+    left: 10px;
+    top: 10px;
+}
+#crossButton {
+    right: 10px;
+    top: 10px;
+}
+.button:hover {
+    background-color: #58534a;
+}
+.button {
+    background-color: #3a322b;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: inset 0 -7px 0 #23221f;
+    border: 5px solid #3a322b;
+    cursor: pointer;
+    transition: 0.07s;
+}
+.button:active {
+    background-color: #23221f;
+    text-align: center;
+    box-shadow: inset 0 7px 0 #433b31;
+    padding-top: 15px;
+}
+.colorBoard {
+    display: grid;
+    grid-template-rows: 45px 45px 45px;
+    grid-template-columns: 45px 45px 45px;
+    grid-gap: 5px;
+    position: absolute;
+    top: 800px;
+    left: 12px;
+}
+.selectorColor {
+    width: 44px;
+    height: 44px;
+    border: 5px solid #3a322b;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    text-align:center;
+    transition: 0.07s;
+    cursor: pointer;
+}
+.selectorColor:hover {
+    filter: brightness(0.9);
+}
+.selectorColor:active {
+    filter: brightness(1.25);
+    transform: scale(1.1);
+}
+.itemBoard {
+    display: grid;
+    grid-gap: 12px 0px;
+    grid-template-columns: 80px 0px;
+    position: absolute;
+    top: 100px;
+    left: 13.5px;
+}
+.boardItem {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.07s;
+}
+.boardItem:hover {
+    filter: brightness(0.9);
+}
+.boardItem:active {
+    filter: brightness(1.25);
+    transform: scale(1.15);
+}

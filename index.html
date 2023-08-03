@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <canvas id = "mapArea" onmousemove = "getMouseCoords(event)"></canvas>
+
+    <div id = "sidebar">
+        <button id = "cursorButton" class = "button"><img src = "https://taming.io/img/interface/cursor.png" width = "34px" height = "34px" draggable="false" style = "transform: rotate(-24deg); margin-left: -3px; margin-bottom: 1px;"></button>
+        <button id = "crossButton" class = "button"><img src = "https://taming.io/img/interface/minimap-cross.png" width = "26px" height = "26px" draggable="false"></button>
+
+        <div class="itemBoard">
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-wall.png" width = "60px" draggable="false" id = "wall"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-door.png" width = "60px" draggable="false" id = "door"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-spike.png" width = "65px" draggable="false" id = "spike"></div>  
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-turret.png" width = "63px" draggable="false" id = "turret"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-fire-tower.png" width = "60px" draggable="false" id = "fireTower"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-electric-tower.png" width = "60px" draggable="false" id = "electricTower"></div>  
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-ice-tower.png" width = "60px" draggable="false" id = "iceTower"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-repair-tower.png" width = "63px" draggable="false" id = "repairTower"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-plant-tower.png" width = "65px" draggable="false" id = "plantTower"></div>  
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-rock-tower.png" width = "60px draggable="false" id = "rockTower"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-water-tower.png" width = "60px draggable="false" id = "waterTower"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-spectrum-tower.png" width = "60px draggable="false" id = "spectrumTower"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-windmill-small.png" width = "60px draggable="false" id = "windmill"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/boost-pad-anim.png" width = "60px" style = "transform: rotate(180deg);" draggable="false" id = "boostPad"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/resurrection-stone.png" width = "65px" draggable="false" id = "healPad"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/bear-trap.png" width = "65px" draggable="false" id = "bearTrap"></div> 
+          </div>
+
+        <div class="colorBoard">
+            <button class = "selectorColor" style = "background-color: #c68a45;" id = "wood" onclick = "changeItemsRarity('wooden')"></button>
+            <button class = "selectorColor" style = "background-color: #81664f;" id = "stone" onclick = "changeItemsRarity('stone')"></button>
+            <button class = "selectorColor" style = "background-color: #dec035;" id = "gold" onclick = "changeItemsRarity('golden')"></button>
+            <button class = "selectorColor" style = "background-color: #962143;" id = "ruby" onclick = "changeItemsRarity('ruby')"></button>
+            <button class = "selectorColor" style = "background-color: #592196;" id = "amethyst" onclick = "changeItemsRarity('amethyst')"></button>
+            <button class = "selectorColor" style = "background-color: #294a8e;" id = "sapphire" onclick = "changeItemsRarity('sapphire')"></button>
+            <button class = "selectorColor" style = "background-color: #c65421;" id = "amber" onclick = "changeItemsRarity('amber')"></button>
+            <button class = "selectorColor" style = "background-color: #179bb0;" id = "diamond" onclick = "changeItemsRarity('diamond')"></button>
+            <button class = "selectorColor" style = "background-color: #5db91c;" id = "emerald" onclick = "changeItemsRarity('emerald')"></button>
+        </div>
+    </div>
+    <script src = "mapCode.js"></script>
+</body>
+</html>
