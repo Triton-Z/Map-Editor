@@ -99,12 +99,8 @@ let prevScale;
 
 function draw () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.save();
-    ctx.translate(50, 50);
-    ctx.rotate(90);
 
     let cursorItem = document.getElementById(itemFormat(selectedItem));
-    
 
 
     if (mouseTouchCanvas) {
