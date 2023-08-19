@@ -10,26 +10,26 @@
     <canvas id = "mapArea" onmousemove = "getMouseCoords(event)"></canvas>
 
     <div id = "sidebar">
-        <button id = "cursorButton" class = "button"><img src = "https://taming.io/img/interface/cursor.png" width = "34px" height = "34px" draggable="false" style = "transform: rotate(-24deg); margin-left: -3px; margin-bottom: 1px;"></button>
-        <button id = "crossButton" class = "button"><img src = "https://taming.io/img/interface/minimap-cross.png" width = "26px" height = "26px" draggable="false"></button>
+        <button id = "cursorButton" class = "button"><img src = "https://taming.io/img/interface/cursor-default.png" width = "37px" height = "37px" draggable="false" style = "margin-left: 9px; margin-bottom: 1px;" id = "cursorImage"></button>
+        <button id = "crossButton" class = "button"><img src = "https://taming.io/img/interface/minimap-cross.png" width = "26px" height = "26px" draggable="false" id = "crossImage"></button>
 
         <div class="itemBoard">
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-wall.png" width = "60px" draggable="false" id = "wall"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-door.png" width = "60px" draggable="false" id = "door"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-spike.png" width = "65px" draggable="false" id = "spike"></div>  
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-turret.png" width = "63px" draggable="false" id = "turret"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-fire-tower.png" width = "60px" draggable="false" id = "fireTower"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-electric-tower.png" width = "60px" draggable="false" id = "electricTower"></div>  
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-ice-tower.png" width = "60px" draggable="false" id = "iceTower"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-repair-tower.png" width = "63px" draggable="false" id = "repairTower"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-plant-tower.png" width = "65px" draggable="false" id = "plantTower"></div>  
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-rock-tower.png" width = "60px draggable="false" id = "rockTower"></div> 
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-water-tower.png" width = "60px draggable="false" id = "waterTower"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-spectrum-tower.png" width = "60px draggable="false" id = "spectrumTower"></div>
-            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-windmill-small.png" width = "60px draggable="false" id = "windmill"></div> 
-            <div class="boardItem"><img src = "https://taming.io/img/world/boost-pad-anim.png" width = "60px" style = "transform: rotate(180deg);" draggable="false" id = "boostPad"></div> 
-            <div class="boardItem"><img src = "https://taming.io/img/world/resurrection-stone.png" width = "65px" draggable="false" id = "healPad"></div> 
-            <div class="boardItem"><img src = "https://taming.io/img/world/bear-trap.png" width = "65px" draggable="false" id = "bearTrap"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-wall.png" width = "60px" draggable="false" id = "wall" onclick = "changeItemType('WALL')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-door.png" width = "60px" draggable="false" id = "door" onclick = "changeItemType('DOOR')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-spike.png" width = "65px" draggable="false" id = "spike" onclick = "changeItemType('SPIKE')"></div>  
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-turret.png" width = "63px" draggable="false" id = "turret" onclick = "changeItemType('TURRET')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-fire-tower.png" width = "60px" draggable="false" id = "fireTower" onclick = "changeItemType('FIRETOWER')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-electric-tower.png" width = "60px" draggable="false" id = "electricTower" onclick = "changeItemType('ELECTRICTOWER')"></div>  
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-ice-tower.png" width = "60px" draggable="false" id = "iceTower" onclick = "changeItemType('ICETOWER')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-repair-tower.png" width = "63px" draggable="false" id = "repairTower" onclick = "changeItemType('REPAIRTOWER')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-plant-tower.png" width = "65px" draggable="false" id = "plantTower" onclick = "changeItemType('PLANTTOWER')"></div>  
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-rock-tower.png" width = "60px draggable="false" id = "rockTower" onclick = "changeItemType('ROCKTOWER')"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-water-tower.png" width = "60px draggable="false" id = "waterTower" onclick = "changeItemType('WATERTOWER')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-spectrum-tower.png" width = "60px draggable="false" id = "spectrumTower" onclick = "changeItemType('SPECTRUMTOWER')"></div>
+            <div class="boardItem"><img src = "https://taming.io/img/world/wooden-windmill-small.png" width = "60px draggable="false" id = "windmill" onclick = "changeItemType('windmill')"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/boost-pad-anim.png" width = "60px" style = "transform: rotate(180deg);" draggable="false" id = "boostPad" onclick = "changeItemType('WALL')"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/resurrection-stone.png" width = "65px" draggable="false" id = "healPad" onclick = "changeItemType('WALL')"></div> 
+            <div class="boardItem"><img src = "https://taming.io/img/world/bear-trap.png" width = "65px" draggable="false" id = "bearTrap" onclick = "changeItemType('WALL')"></div> 
           </div>
 
         <div class="colorBoard">
