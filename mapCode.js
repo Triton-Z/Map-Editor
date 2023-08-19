@@ -4,6 +4,7 @@ const ctx = canvas.getContext("2d");
 document.body.style.padding = 0;
 document.body.style.margin = 0;
 document.body.style.overflow = "hidden";
+document.addEventListener('contextmenu', event => event.preventDefault());
 
 canvas.width = window.innerWidth - document.getElementById("sidebar").offsetWidth;
 canvas.height = window.innerHeight;
@@ -83,21 +84,40 @@ class Item {
         this.degree = degree;
         this.type = type;
         this.material = material;
+        //this.image = new Image();
+        //this.image.src = 
     }
 }
 
 let selectedClickEvent = "POINTER";
-let selectedItem = "NONE";
+let selectedItem = "WALL";
 let selectedTier = "WOODEN";
+let scale = 2;
 
-
+let mouseTouchCanvas = false;
+let prevScale;
 
 function draw () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.translate(50, 50);
+    ctx.rotate(90);
 
-    ctx.fillStyle = "black";
-    ctx.fillRect(mouseCoords.x, mouseCoords.y, 50, 50);
+    let cursorItem = document.getElementById(itemFormat(selectedItem));
+    
 
+
+    if (mouseTouchCanvas) {
+        if (selectedClickEvent == "CROSS") {
+            cursorItem = document.getElementById("crossImage");
+            ctx.drawImage(cursorItem, mouseCoords.x - (cursorItem.width + scale) / 2, mouseCoords.y - (cursorItem.height + scale) / 2, 20, 20);
+        } else {
+            ctx.drawImage(cursorItem, mouseCoords.x - (cursorItem.width + scale) / 2, mouseCoords.y - (cursorItem.height + scale) / 2, cursorItem.width + scale, cursorItem.height + scale);
+        }
+        
+    }
+
+    ctx.restore();
     setTimeout(draw, 17);
 };
 
@@ -107,14 +127,34 @@ function getMouseCoords (evt) {
     mouseCoords.y = evt.clientY - rect.top;
 }
 
-function changeItemsRarity(rarity) {
+
+function changeItemsRarity(tier) {
     const items = [wall, door, spike, turret, fireTower, electricTower, iceTower, repairTower, plantTower, rockTower, waterTower, spectrumTower, windmill]
     items.forEach(i => {
-        i.src = i.src.replace(selectedTier.toLowerCase(), rarity);
-        console.log(i.src);
+        i.src = i.src.replace(selectedTier.toLowerCase(), tier);
     });
-    selectedTier = rarity;
+    selectedTier = tier;
 }
+
+function changeItemType(type) {
+    selectedItem = type;
+}
+
+function itemFormat(format) {
+    if (format.toLowerCase().includes("tower")) {
+        return(format.toLowerCase().substring(0, format.indexOf("TOWER")) + "Tower");
+    } else
+    {
+        return(format.toLowerCase());
+    }
+}
+
+canvas.addEventListener("mouseleave", function (event) {
+    mouseTouchCanvas = false;
+}, false);
+canvas.addEventListener("mouseover", function (event) {
+    mouseTouchCanvas = true;
+}, false);
 
 cursorButton.addEventListener("click", function() {
     selectedClickEvent = "POINTER";
