@@ -78,21 +78,21 @@ const mouseCoords = {
 
 const obj = []
 class Item {
-    constructor (type, material, degree, x, y) {
+    constructor (degree, x, y, tier, item) {
         this.x = x;
         this.y = y;
         this.degree = degree;
-        this.type = type;
-        this.material = material;
-        //this.image = new Image();
-        //this.image.src = 
+        this.tier = tier;
+        this.item = item;
     }
 }
 
 let selectedClickEvent = "POINTER";
 let selectedItem = "WALL";
 let selectedTier = "WOODEN";
+
 let scale = 2;
+let rotation = 0;
 
 let mouseTouchCanvas = false;
 let prevScale;
@@ -108,9 +108,13 @@ function draw () {
             cursorItem = document.getElementById("crossImage");
             ctx.drawImage(cursorItem, mouseCoords.x - (cursorItem.width + scale) / 2, mouseCoords.y - (cursorItem.height + scale) / 2, 20, 20);
         } else {
-            ctx.drawImage(cursorItem, mouseCoords.x - (cursorItem.width + scale) / 2, mouseCoords.y - (cursorItem.height + scale) / 2, cursorItem.width + scale, cursorItem.height + scale);
+            ctx.save();
+            ctx.translate(mouseCoords.x, mouseCoords.y);
+            ctx.rotate(rotation);
+            ctx.drawImage(cursorItem, 0 - (cursorItem.width + scale) / 2, 0 - (cursorItem.height + scale) / 2, cursorItem.width + scale, cursorItem.height + scale);
+            ctx.restore();
         }
-        
+
     }
 
     ctx.restore();
@@ -134,6 +138,7 @@ function changeItemsRarity(tier) {
 
 function changeItemType(type) {
     selectedItem = type;
+    selectedClickEvent = "POINTER";
 }
 
 function itemFormat(format) {
@@ -144,6 +149,22 @@ function itemFormat(format) {
         return(format.toLowerCase());
     }
 }
+
+canvas.addEventListener('click', function handleClick() {
+    console.log('element clicked');
+});
+
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if (key == "ArrowRight" || key == "r") {
+        rotation += 0.1;   
+    } 
+
+    if (key == "ArrowLeft" || key == "e") {
+        rotation -= 0.1;   
+    } 
+
+});
 
 canvas.addEventListener("mouseleave", function (event) {
     mouseTouchCanvas = false;
@@ -159,5 +180,6 @@ cursorButton.addEventListener("click", function() {
 crossButton.addEventListener("click", function() {
     selectedClickEvent = "CROSS";
 }); 
+
 
 window.onload = draw;
